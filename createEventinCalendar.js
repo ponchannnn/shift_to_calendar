@@ -4,12 +4,16 @@ const calId = config.calendarId;
 
 
 module.exports = {
+    
     create:create
 }
 
-let event = {
-    'start': {'dateTime': '2019-08-29T10:00:00+09:00'},
-    'end'  : {'dateTime': '2019-08-29T11:00:00+09:00'},
+
+
+function create () {
+  let event = {
+    'start': {'dateTime': '2019-08-29T10:00:00', 'timeZone' : 'Asia/Tokyo'},
+    'end'  : {'dateTime': '2019-08-29T11:00:00', 'timeZone' : 'Asia/Tokyo'},
     // ------------
     // 終日イベントの場合
     // 'start': {'date': '2019-08-30'},
@@ -32,7 +36,6 @@ let event = {
     // 11:トマト
   };
 
-function create () {
     cal.Events.insert(calId, event)
 .then(resp => {
   console.log(resp);
