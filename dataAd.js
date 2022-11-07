@@ -6,38 +6,38 @@ module.exports = {
 }
 
 function dataAdusting (data) {
-    let n = 0;
-    while (data[n]["日付"] !== "") {
-        if (data[n]["日付"] !== "/^20\d{2}/([0][1-9]|[1][0-2])/[1-31]$/") continue; 
-        let dataArray = data[n]["日付"].split("/");
+
+    for (n in data) {
+        //let nrm = "/^20\d{2}/(0?[1-9]|[1][0-2])/([0][1-9]|[1-2][0-9]|[3][0-1])$/";
+        //if (nrm.match(data[n][dataKey[0]]) == null) {console.log(data[n][dataKey[0]]); return;}
+        let dataObj = Object.values(data[n]);
+        let date = dataObj[0].split("/");
         //min
         let m = 0;
-        while (data[n][coma.enum[m]] = "") {
-            console.log("a");
-            if (m == coma.enum.length) break;
+
+        while (data[n][coma.enumStart[m]] !== coma.circle) {
+            if (m == coma.enumStart.length) break;
             m++;
         }
+
+        let min = coma.enumStart[m];
+
         //max
-        let min = coma.enum[m];
-        
-        m = coma.enum.length;
-        while (data[n][coma.enum[m]] = "") {
-            console.log("b");
+
+        m = coma.enumEnd.length - 1;
+        while (data[n][coma.enumEnd[m]] !== coma.circle) {
             if (m == 0) break;
             m--;
         }
+        let max = coma.enumEnd[m];
 
-        let max = coma.enum[m];
-
-        if (min == max || min == coma.enum[coma.enum.length] || max == coma.enum[0]) continue;
-
+        if (min == max || min == coma.enumStart[coma.enumStart.length] || max == coma.enumEnd[0]) continue;
         min = coma.detail[min].startTime;
         max = coma.detail[max].endTime;
 
         
-        console.log(`${dataArray[0]},${dataArray[1]},${dataArray[2]},${min},${max}`);
-        //cal.create(dataArray[0], dataArray[1], dataArray[2],min, max);
-        n++;
+        //console.log(`${date[0]},${date[1]},${date[2]},${min},${max}`);
+        cal.create(date[0], date[1], date[2],min, max);
         break;
     }
 

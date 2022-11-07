@@ -3,25 +3,61 @@
     "detail" : 
     {
         "Aコマ" : {
-            "startTIme" : "15:30:00",
+            "startTime" : "15:30:00",
             "endTime" : "17:10:00"
         },
 
         "Bコマ" : {
-            "startTIme" : "17:00:00",
+            "startTime" : "17:00:00",
             "endTime" : "18:40:00"
         },
 
         "Cコマ" : {
-            "startTIme" : "18:30:00",
+            "startTime" : "18:30:00",
             "endTime" : "20:10:00"
         },
 
         "Dコマ" : {
-            "startTIme" : "20:00:00",
+            "startTime" : "20:00:00",
+            "endTime" : "21:40:00"
+        },
+
+        "Syudan1" : {
+            "startTime" : "19:10:00",
+            "endTime" : "20:15:00"
+        },
+
+        "Syudan2" : {
+            "startTime" : "20:00:00",
+            "endTime" : "21:05:00"
+        },
+
+        "Syudan3" : {
+            "startTime" : "20:50:00",
+            "endTime" : "22:55:00"
+        },
+
+        "Syudan70" : {
+            "startTime" : "20:00:00",
             "endTime" : "21:40:00"
         }
     },
 
-    "enum" : ["Aコマ", "Bコマ", "Cコマ", "Dコマ"]
+    "enumStart" : ["Aコマ", "Bコマ", "Cコマ", "Syudan1", "Dコマ", "Syudan2", "Syudan70", "Syudan3"],
+
+    "enumEnd" : ["Aコマ", "Bコマ", "Cコマ", "Syudan1", "Dコマ", "Syudan2", "Syudan70", "Syudan3"],
+
+    "Object" : {
+        "Date" : "Date",
+        "Acoma" : "Aコマ",
+        "Bcoma" : "Bコマ",
+        "Ccoma" : "Cコマ",
+        "Dcoma" : "Dコマ",
+        "Syudan1" : "19:30",
+        "Syudan2" : "20:20~21:05",
+        "Syudan3" : "21:10",
+        "Syudan70" : "20:20~21:40"
+    } ,
+
+    "circle" : "o"
 }
