@@ -15,7 +15,7 @@ function main(argv) {
         return;
     }
 
-    fs.createReadStream(__dirname + "\\" + argv[2])
+    fs.createReadStream(__dirname + argv[2].slice(1))
     .pipe(csv.parse({columns: true}, function(err, data) {
         //dataAd.dataAdusting(data);
         dataAd.dataAdjustingFromTime(data);

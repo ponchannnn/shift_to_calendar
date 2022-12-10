@@ -56,21 +56,21 @@ function dataAdjustingFromTime(data) {// from start time n end time
         let rawData = data[n]; // 1 raw data // rawData[0] = date, rawData[1] = start, rawData[2] = end
         let date = rawData["Date"].split("/") // date[0] = year, date[1] = month, date[2] = day
 
-        
-        start = rawData["Start"];
-        end = rawData["End"];
-
         // check if another one be undefined
-        if ((!start && end) || (start && !end)) { 
+        if ((!rawData["Start"] && rawData["End"]) || (rawData["Start"] && !rawData["End"])) { 
             console.log(`${date} skipped because of the data none.`);
             continue;
         }
 
-        if (!start && !end) continue;// if none data, skip
+        if (!rawData["Start"] && !rawData["End"]) continue;// if none data, skip
+
+        // to 12:25:00
+        let start = `${rawData["Start"]}:00`;
+        let end = `${rawData["End"]}:00`;
         
-        console.log(`${date[0]},${date[1]},${date[2]},${start},${end}`);
-        // setTimeout(() => cal.create(date[0], date[1], date[2],min, max), n * 1000);
-        // clearTimeout();
+        //console.log(`${date[0]},${date[1]},${date[2]},${start},${end}`);
+        setTimeout(() => cal.create(date[0], date[1], date[2], start, end), n * 1000);
+        clearTimeout();
     }
 
 }
