@@ -9,7 +9,13 @@ const dataAd = require("./dataAd.js");
 main(process.argv);
 
 function main(argv) {
-    fs.createReadStream(__dirname + argv[2])
+    // check file undefined
+    if (!argv[2]) {
+        console.log("You need to choose which file you use!");
+        return;
+    }
+
+    fs.createReadStream(__dirname + "\\" + argv[2])
     .pipe(csv.parse({columns: true}, function(err, data) {
         //dataAd.dataAdusting(data);
         dataAd.dataAdjustingFromTime(data);

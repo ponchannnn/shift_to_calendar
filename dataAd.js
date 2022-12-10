@@ -1,6 +1,6 @@
 const coma = require("./coma.json");
 const cal = require("./createEventinCalendar.js");
-const cells = require();
+//const cells = require();
 
 //   npm install aspose.cells
 
@@ -40,9 +40,9 @@ function dataAdusting (data) {
         max = coma.detail[max].endTime;
 
         
-        //console.log(`${date[0]},${date[1]},${date[2]},${min},${max}`);
-        cal.create(date[0], date[1], date[2],min, max);
-        break;
+        //setTimeout(() => console.log(`${date[0]},${date[1]},${date[2]},${min},${max}`), n * 1000);
+        setTimeout(() => cal.create(date[0], date[1], date[2],min, max), n * 1000);
+        clearTimeout();
     }
 
     
@@ -54,21 +54,23 @@ function dataAdjustingFromTime(data) {// from start time n end time
         //if (nrm.match(data[n][dataKey[0]]) == null) {console.log(data[n][dataKey[0]]); return;}
 
         let rawData = data[n]; // 1 raw data // rawData[0] = date, rawData[1] = start, rawData[2] = end
-        let date = rawData[0].split("/") // date[0] = year, date[1] = month, date[2] = day
+        let date = rawData["Date"].split("/") // date[0] = year, date[1] = month, date[2] = day
 
         
-        start = rawData["start"];
-        end = rawData["end"];
+        start = rawData["Start"];
+        end = rawData["End"];
 
         // check if another one be undefined
         if ((!start && end) || (start && !end)) { 
-            console.log(`${date[n]} skipped because of the data none.`);
-            break;
+            console.log(`${date} skipped because of the data none.`);
+            continue;
         }
+
+        if (!start && !end) continue;// if none data, skip
         
         console.log(`${date[0]},${date[1]},${date[2]},${start},${end}`);
-        //cal.create(date[0], date[1], date[2], start, end);
-        break;
+        // setTimeout(() => cal.create(date[0], date[1], date[2],min, max), n * 1000);
+        // clearTimeout();
     }
 
 }
